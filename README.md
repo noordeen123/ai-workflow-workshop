@@ -54,7 +54,7 @@ PRD Analysis → Technical Requirements → Implementation → Testing → Relea
 - **ClickUp MCP** for PRD management
 - **ShadCN MCP** for UI components
 - **Postgres MCP** for database operations
-- **Cypress MCP** for testing automation
+- **Playwright MCP** for browser automation and test generation
 
 ## 🚀 Quick Start & Workshop Setup
 
@@ -118,34 +118,62 @@ Set up Model Context Protocol integrations for enhanced AI capabilities:
 - Set up ClickUp MCP for PRD management
 - Configure ShadCN MCP for UI components  
 - Set up Postgres MCP for database operations
-- Configure Cypress MCP for testing
+- Configure Playwright MCP for browser automation
 
 ## 📁 Project Structure
 
 ```
 ai-workflow-workshop/
-├── frontend/               # React TypeScript frontend
+├── frontend/               # React TypeScript frontend (foundation setup)
 │   ├── src/
+│   │   ├── components/     # To be built: KanbanBoard, TaskCard, etc.
+│   │   ├── services/       # To be built: API client
+│   │   ├── types/          # To be built: TypeScript definitions
+│   │   └── ...
 │   ├── public/
 │   ├── package.json
 │   └── tsconfig.json
-├── backend/                # NestJS TypeScript backend
+├── backend/                # NestJS TypeScript backend (foundation setup)
 │   ├── src/
+│   │   ├── controllers/    # To be built: Task controllers
+│   │   ├── dto/            # To be built: Data transfer objects
+│   │   ├── entities/       # To be built: Database entities
+│   │   ├── services/       # To be built: Business logic
+│   │   └── modules/        # To be built: Feature modules
 │   ├── package.json
 │   └── tsconfig.json
-├── docs/                   # Workshop documentation
-│   ├── ai-workflow-process.md
-│   ├── mcp-setup.md
-│   └── workshop-guide.md
+├── cypress/                # E2E test framework (configured, tests TBD)
+│   ├── e2e/               # Test specifications (to be generated)
+│   └── support/
 ├── templates/              # Templates for PRDs, implementation guides
-│   ├── implementation/
-│   ├── prd/
-│   └── testing/
-├── .mcp/                   # MCP configurations
+│   ├── implementation/     # Backend, frontend, E2E setup guides
+│   └── prd/                # PRD templates for feature development
+├── TaskFlow-*.md           # Pre-created PRD examples (6 features)
+├── TODO-IMPLEMENTATION-PLAN.md # Workshop implementation roadmap
 ├── package.json            # Root workspace config
 ├── .env.example            # Environment template
 └── README.md               # This file
 ```
+
+### 📋 Pre-created PRD Examples
+The workshop includes 6 ready-to-use PRD examples for different features:
+- `TaskFlow-Auth-PRD.md` - User authentication and authorization
+- `TaskFlow-Counter-PRD.md` - Task counter and statistics
+- `TaskFlow-Homepage-PRD.md` - Landing page and dashboard
+- `TaskFlow-Kanban-PRD.md` - Core kanban board functionality
+- `TaskFlow-Search-Filter-PRD.md` - Search and filtering capabilities
+- `TaskFlow-Tagging-PRD.md` - Task tagging system
+
+### 🎯 Workshop Starting Point
+This repository provides a **development foundation** with:
+- 📋 **Project structure** and configuration files
+- 🛠️ **Development toolchain** (React, NestJS, TypeScript)
+- 🗃️ **Database setup** with PostgreSQL integration
+- 🧪 **Testing framework** with Cypress and Playwright
+- 🎨 **UI component library** (ShadCN) ready for use
+- 📝 **Pre-written PRDs** for feature implementation
+
+Participants will **build the kanban board from scratch** using AI-assisted development, starting with basic functionality and progressively adding advanced features.
 
 ## 📚 Workshop Modules
 
@@ -162,7 +190,7 @@ ai-workflow-workshop/
    - Set up ClickUp MCP for PRD management
    - Configure ShadCN MCP for UI components
    - Set up Postgres MCP for database operations
-   - Configure Cypress MCP for testing
+   - Configure Playwright MCP for browser automation
 
 3. **AI Tool Setup** (5 min)
    - Configure your preferred AI tool
@@ -179,7 +207,7 @@ ai-workflow-workshop/
 
 **Activities:**
 1. **PRD Analysis** (20 min)
-   - Review pre-created PRDs for available features (Todo CRUD, Tagging, Search, etc.)
+   - Review pre-created TaskFlow PRDs (Auth, Counter, Homepage, Kanban, Search-Filter, Tagging)
    - Analyze user stories and acceptance criteria
    - Understand business requirements and success criteria
    - Choose a feature to implement based on PRD analysis
@@ -243,8 +271,11 @@ ai-workflow-workshop/
 2. **AI-Generated Tests** (25 min)
    - Use AI to generate unit tests for services/components
    - Create integration tests for API endpoints
-   - Write E2E tests for user workflows
-   - Use Cypress MCP for test automation
+   - **NLP to Test Workflow:**
+     1. Define test scenarios in natural language
+     2. Use Playwright MCP to execute browser actions
+     3. Feed action context back to LLM to generate Cypress tests
+   - Verify generated test coverage
 
 3. **Quality Validation** (10 min)
    - Run all tests and verify coverage
@@ -277,46 +308,52 @@ ai-workflow-workshop/
 
 ## 🛠️ Feature Implementation Exercises
 
-### Exercise 1: Todo CRUD Operations (Beginner)
-**Goal:** Add update and delete functionality to existing todos
+### Exercise 1: Basic Kanban Board (Beginner)
+**Goal:** Build the core kanban board functionality from scratch
 
 **Steps:**
-1. Analyze existing PRD using template structure
-2. Create technical implementation plan
-3. Implement backend CRUD operations
-4. Create frontend update/delete components
-5. Write comprehensive tests
-6. Deploy and verify functionality
+1. Review TaskFlow-Kanban-PRD.md for requirements
+2. Create technical implementation plan using templates
+3. Build backend API with task CRUD operations
+4. Develop frontend kanban components with drag-and-drop
+5. Generate E2E tests using NLP → Playwright → LLM workflow
+6. Test and verify functionality
 
-**Key Learning:** Basic AI-assisted development workflow
+**Key Learning:** End-to-end AI-assisted development workflow
 
 ### Exercise 2: Tagging System (Intermediate)
-**Goal:** Add ability to tag todos and filter by tags
+**Goal:** Add ability to tag tasks and filter by tags
 
 **Steps:**
-1. Design tag data model and relationships
-2. Analyze comprehensive PRD for user stories
+1. Analyze TaskFlow-Tagging-PRD.md for requirements
+2. Design tag data model and relationships
 3. Document technical implementation plan
 4. Implement tag management API
 5. Build tag UI components with ShadCN
 6. Create filtering and search functionality
-7. Test all user workflows
+7. **Generate E2E tests:**
+   - Describe tag workflows in natural language
+   - Use Playwright to record user interactions
+   - Convert Playwright actions to Cypress tests via LLM
 
-**Key Learning:** Complex feature design and implementation
+**Key Learning:** Complex feature design with AI-assisted testing
 
 ### Exercise 3: Authentication Flow (Advanced)
 **Goal:** Implement user authentication and authorization
 
 **Steps:**
-1. Research authentication strategies
-2. Create security-focused technical plan
+1. Review TaskFlow-Auth-PRD.md for security requirements
+2. Research authentication strategies and create technical plan
 3. Implement JWT-based auth system
 4. Build login/register components
-5. Add authorization guards
-6. Create comprehensive security tests
-7. Document security considerations
+5. Add authorization guards and middleware
+6. **Advanced Testing Workflow:**
+   - Define security test scenarios in natural language
+   - Use Playwright to simulate authentication flows
+   - Generate comprehensive Cypress security tests via LLM
+7. Document security considerations and implementation
 
-**Key Learning:** Security implementation with AI assistance
+**Key Learning:** Security implementation with AI-assisted comprehensive testing
 
 ## 🔧 Best Practices & Tips
 
