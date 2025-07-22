@@ -10,7 +10,7 @@ This workshop teaches developers how to effectively use AI tools in a structured
 By the end of this workshop, you will:
 - **Design First:** Learn to think architecturally before coding
 - **Context is King:** Master providing effective context to AI tools
-- **Structured Workflow:** Follow a proven Design → PRD → ADR → Implementation → Testing → Release cycle
+- **Structured Workflow:** Follow a proven PRD Analysis → Technical Requirements → Implementation → Testing → Release cycle
 - **MCP Integration:** Leverage Model Context Protocol for enhanced AI capabilities
 - **Quality Assurance:** Maintain code quality when using AI assistance
 - **Version Control:** Manage AI-generated code changes effectively
@@ -19,15 +19,15 @@ By the end of this workshop, you will:
 
 ### Core Workflow
 ```
-Design Phase → PRD Creation → ADR Documentation → Implementation → Testing → Release → Iterate
-     ↓              ↓               ↓              ↓           ↓         ↓
-  Research       Document      Technical      AI-Assisted   Test      Deploy
-  & Plan        Requirements   Decisions      Development   Quality   & Monitor
+PRD Analysis → Technical Requirements → Implementation → Testing → Release → Iterate
+     ↓              ↓                    ↓           ↓         ↓
+  Analyze        Technical            AI-Assisted   Test      Deploy
+  Requirements   Planning (ADR)             Development   Quality   & Monitor
 ```
 
 ### Key Principles
 1. **AI as Implementation Partner:** You architect, AI implements
-2. **Documentation Driven:** Clear requirements lead to better AI output
+2. **PRD-Driven Development:** Clear requirements lead to better AI output
 3. **Context Rich:** More context = better AI assistance
 4. **Quality Gates:** Maintain standards through testing and review
 5. **Iterative Process:** Continuous improvement and learning
@@ -137,8 +137,7 @@ ai-workflow-workshop/
 │   ├── ai-workflow-process.md
 │   ├── mcp-setup.md
 │   └── workshop-guide.md
-├── templates/              # Templates for PRDs, ADRs, implementation
-│   ├── adr/
+├── templates/              # Templates for PRDs, implementation guides
 │   ├── implementation/
 │   ├── prd/
 │   └── testing/
@@ -176,29 +175,30 @@ ai-workflow-workshop/
 - Baseline understanding of the codebase
 
 ### Module 2: Design & Documentation (45 minutes)
-**Objective:** Learn to create comprehensive PRDs and ADRs
+**Objective:** Understand PRD analysis and technical requirements planning
 
 **Activities:**
-1. **Feature Analysis** (15 min)
-   - Choose a feature to implement (Todo CRUD, Tagging, Search, etc.)
-   - Analyze user needs and business requirements
-   - Define success criteria
+1. **PRD Analysis** (20 min)
+   - Review pre-created PRDs for available features (Todo CRUD, Tagging, Search, etc.)
+   - Analyze user stories and acceptance criteria
+   - Understand business requirements and success criteria
+   - Choose a feature to implement based on PRD analysis
 
-2. **PRD Creation** (20 min)
-   - Use the PRD template from `/templates/prd/`
-   - Document user stories and acceptance criteria
-   - Define technical requirements
-   - Upload to ClickUp using MCP integration
+2. **Technical Requirements Planning** (20 min)
+   - Extract technical requirements from chosen PRD
+   - Define implementation approach and architecture choices
+   - Create TODO implementation plan with clear steps
+   - Set up proper context for AI-assisted development
 
-3. **Technical Decision Making** (10 min)
-   - Create ADR for key technical decisions
-   - Document architecture choices
-   - Consider implementation approaches
+3. **PRD Template Review** (5 min)
+   - Review PRD template from `/templates/prd/` for future reference
+   - Understand how PRDs can be created using ClickUp MCP integration
+   - Learn PRD structure and best practices
 
 **Deliverables:**
-- Complete PRD for chosen feature
-- ADR documenting technical decisions
-- Clear implementation roadmap
+- Selected feature with clear understanding of requirements
+- Technical implementation plan and TODO list
+- Context preparation for AI-assisted development
 
 ### Module 3: AI-Assisted Implementation (60 minutes)
 **Objective:** Implement features using AI tools with proper context
@@ -281,8 +281,8 @@ ai-workflow-workshop/
 **Goal:** Add update and delete functionality to existing todos
 
 **Steps:**
-1. Create PRD using feature template
-2. Design API endpoints in ADR
+1. Analyze existing PRD using template structure
+2. Create technical implementation plan
 3. Implement backend CRUD operations
 4. Create frontend update/delete components
 5. Write comprehensive tests
@@ -295,8 +295,8 @@ ai-workflow-workshop/
 
 **Steps:**
 1. Design tag data model and relationships
-2. Create comprehensive PRD with user stories
-3. Document technical decisions in ADR
+2. Analyze comprehensive PRD for user stories
+3. Document technical implementation plan
 4. Implement tag management API
 5. Build tag UI components with ShadCN
 6. Create filtering and search functionality
@@ -309,7 +309,7 @@ ai-workflow-workshop/
 
 **Steps:**
 1. Research authentication strategies
-2. Create security-focused ADR
+2. Create security-focused technical plan
 3. Implement JWT-based auth system
 4. Build login/register components
 5. Add authorization guards
@@ -322,7 +322,7 @@ ai-workflow-workshop/
 
 ### Effective AI Prompting
 1. **Provide Complete Context**
-   - Share relevant PRDs and ADRs
+   - Share relevant PRDs and technical requirements
    - Include existing code patterns
    - Specify technology stack and versions
 
@@ -351,7 +351,7 @@ ai-workflow-workshop/
 
 3. **Documentation**
    - Update documentation as you build
-   - Keep ADRs current with decisions
+   - Keep technical requirements current with decisions
    - Document any deviations from standards
 
 ### Common Pitfalls to Avoid
@@ -373,8 +373,8 @@ ai-workflow-workshop/
 After each module, evaluate your progress:
 
 **Design & Documentation:**
-- [ ] Can create comprehensive PRDs with clear requirements
-- [ ] Able to document technical decisions in ADRs
+- [ ] Can analyze PRDs and extract clear requirements
+- [ ] Able to create technical implementation plans
 - [ ] Understand how to break down complex features
 
 **AI Collaboration:**
@@ -395,7 +395,7 @@ After each module, evaluate your progress:
 ### Success Metrics
 - **Feature Completion:** Fully functional implemented features
 - **Code Quality:** Clean, maintainable, well-tested code
-- **Documentation:** Complete PRDs and ADRs for all features
+- **Documentation:** Complete PRDs analysis and technical implementation plans for all features
 - **Process Adherence:** Following the complete workflow cycle
 - **AI Effectiveness:** Efficient AI collaboration with good outcomes
 
@@ -484,24 +484,6 @@ npm run build
 3. **Share:** Document your learnings and share with the team
 4. **Scale:** Apply these patterns to your real projects
 
-### Additional Resources
-- [AI Workflow Process Documentation](./docs/ai-workflow-process.md)
-- [MCP Setup Guide](./docs/mcp-setup.md)
-- [Templates Directory](./templates/)
-- [Community Examples and Patterns](#)
-
-### Support and Community
-- Workshop GitHub Issues for questions
-- Community Discord for ongoing support
-- Regular follow-up sessions for advanced topics
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Make your changes following the AI workflow process
-4. Test your changes comprehensively
-5. Submit a pull request with detailed documentation
 
 ## 📝 Workshop Feedback
 
