@@ -21,10 +21,13 @@
     "install:frontend": "cd frontend && npm install",
     "install:backend": "cd backend && npm install",
     "lint": "npm run lint:frontend",
-    "lint:frontend": "cd frontend && npm run lint"
+    "lint:frontend": "cd frontend && npm run lint",
+    "test:e2e": "cypress run",
+    "test:e2e:open": "cypress open"
   },
   "devDependencies": {
-    "concurrently": "^9.0.1"
+    "concurrently": "^9.0.1",
+    "cypress": "^14.5.2"
   },
   "keywords": [
     "kanban",
