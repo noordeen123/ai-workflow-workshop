@@ -2,8 +2,8 @@ import React from 'react';
 import { useDroppable } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { Task, TaskStatus } from '../types';
-import { TaskCard } from './TaskCard';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/Card';
+import { TaskCard } from './TaskCard';
 
 interface KanbanColumnProps {
   status: TaskStatus;
@@ -13,9 +13,9 @@ interface KanbanColumnProps {
 }
 
 const statusColors = {
-  [TaskStatus.TODO]: 'border-blue-200 bg-blue-50',
-  [TaskStatus.IN_PROGRESS]: 'border-yellow-200 bg-yellow-50',
-  [TaskStatus.COMPLETED]: 'border-green-200 bg-green-50',
+  [TaskStatus.TODO]: 'border-t-blue-500 bg-blue-50',
+  [TaskStatus.IN_PROGRESS]: 'border-t-yellow-500 bg-yellow-50',
+  [TaskStatus.COMPLETED]: 'border-t-green-500 bg-green-50',
 };
 
 export const KanbanColumn: React.FC<KanbanColumnProps> = ({
@@ -29,19 +29,19 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({
   });
 
   return (
-    <Card className={`${statusColors[status]} ${isOver ? 'ring-2 ring-blue-400' : ''}`}>
+    <Card className={`border-t-4 ${statusColors[status]} ${isOver ? 'ring-2 ring-blue-300' : ''}`}>
       <CardHeader className="pb-3">
-        <CardTitle className="flex items-center justify-between text-sm font-medium text-gray-700">
+        <CardTitle className="text-lg flex items-center justify-between">
           {title}
-          <span className="ml-2 rounded-full bg-white px-2 py-1 text-xs text-gray-600">
+          <span className="bg-gray-200 text-gray-700 text-sm font-medium px-2 py-1 rounded-full">
             {tasks.length}
           </span>
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-3">
+      <CardContent>
         <div
           ref={setNodeRef}
-          className="min-h-[400px] space-y-3"
+          className="space-y-3 min-h-[200px]"
         >
           <SortableContext items={tasks.map(task => task.id)} strategy={verticalListSortingStrategy}>
             {tasks.map((task) => (
@@ -53,8 +53,9 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({
             ))}
           </SortableContext>
           {tasks.length === 0 && (
-            <div className="flex items-center justify-center h-32 text-gray-400 text-sm">
-              Drop tasks here
+            <div className="text-center py-8 text-gray-500">
+              <p className="text-sm">No tasks yet</p>
+              <p className="text-xs">Drag tasks here or create new ones</p>
             </div>
           )}
         </div>
