@@ -12,8 +12,8 @@ export class AuthService {
     private userRepository: Repository<User>,
   ) {}
 
-  async register(createUserDto: CreateUserDto): Promise<{ user: Omit<User, 'passwordHash'> }> {
-    const { email, password } = createUserDto;
+  async register(createUserDto: CreateUserDto): Promise<{ user: Omit<User, 'password'> }> {
+    const { email, password, firstName, lastName } = createUserDto;
 
     // Check if user already exists
     const existingUser = await this.userRepository.findOne({ where: { email } });
@@ -23,22 +23,24 @@ export class AuthService {
 
     // Hash password
     const saltRounds = 10;
-    const passwordHash = await bcrypt.hash(password, saltRounds);
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     // Create user
     const user = this.userRepository.create({
       email,
-      passwordHash,
+      password: hashedPassword,
+      firstName,
+      lastName,
     });
 
     const savedUser = await this.userRepository.save(user);
 
-    // Remove password hash from response
-    const { passwordHash: _, ...userResponse } = savedUser;
+    // Remove password from response
+    const { password: _, ...userResponse } = savedUser;
     return { user: userResponse };
   }
 
-  async login(loginDto: LoginDto): Promise<{ user: Omit<User, 'passwordHash'> }> {
+  async login(loginDto: LoginDto): Promise<{ user: Omit<User, 'password'> }> {
     const { email, password } = loginDto;
 
     // Find user
@@ -48,17 +50,17 @@ export class AuthService {
     }
 
     // Verify password
-    const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
+    const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    // Remove password hash from response
-    const { passwordHash: _, ...userResponse } = user;
+    // Remove password from response
+    const { password: _, ...userResponse } = user;
     return { user: userResponse };
   }
 
-  async findById(id: number): Promise<User | null> {
+  async findById(id: string): Promise<User | null> {
     return this.userRepository.findOne({ where: { id } });
   }
 }

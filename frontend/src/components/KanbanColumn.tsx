@@ -33,7 +33,7 @@ export const KanbanColumn: React.FC<KanbanColumnProps> = ({
       <CardHeader className="pb-3">
         <CardTitle className="text-lg flex items-center justify-between">
           {title}
-          <span className="bg-gray-200 text-gray-700 text-sm font-medium px-2 py-1 rounded-full">
+          <span className="bg-slate-200 text-slate-700 text-sm font-medium px-2 py-1 rounded-full">
             {tasks.length}
           </span>
         </CardTitle>

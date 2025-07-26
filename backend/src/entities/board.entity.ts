@@ -4,8 +4,8 @@ import { Task } from './task.entity';
 
 @Entity('boards')
 export class Board {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   name: string;
@@ -14,7 +14,7 @@ export class Board {
   description: string;
 
   @Column({ name: 'user_id' })
-  userId: number;
+  userId: string;
 
   @ManyToOne(() => User, user => user.boards)
   @JoinColumn({ name: 'user_id' })

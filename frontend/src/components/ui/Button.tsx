@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
@@ -10,8 +10,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const buttonVariants = {
   default: 'bg-blue-600 text-white hover:bg-blue-700',
   destructive: 'bg-red-600 text-white hover:bg-red-700',
-  outline: 'border border-gray-300 bg-transparent hover:bg-gray-50',
-  secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300',
+  outline: 'border border-slate-300 bg-transparent hover:bg-slate-50',
+  secondary: 'bg-slate-200 text-slate-900 hover:bg-slate-300',
   ghost: 'hover:bg-gray-100',
   link: 'text-blue-600 underline-offset-4 hover:underline',
 };

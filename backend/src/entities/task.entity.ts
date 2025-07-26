@@ -3,14 +3,20 @@ import { Board } from './board.entity';
 
 export enum TaskStatus {
   TODO = 'todo',
-  IN_PROGRESS = 'in_progress',
-  DONE = 'done'
+  IN_PROGRESS = 'in-progress',
+  COMPLETED = 'completed'
+}
+
+export enum TaskPriority {
+  LOW = 'low',
+  MEDIUM = 'medium',
+  HIGH = 'high'
 }
 
 @Entity('tasks')
 export class Task {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column()
   title: string;
@@ -25,11 +31,18 @@ export class Task {
   })
   status: TaskStatus;
 
+  @Column({ 
+    type: 'enum', 
+    enum: TaskPriority, 
+    default: TaskPriority.MEDIUM 
+  })
+  priority: TaskPriority;
+
   @Column({ default: 0 })
   position: number;
 
   @Column({ name: 'board_id' })
-  boardId: number;
+  boardId: string;
 
   @ManyToOne(() => Board, board => board.tasks)
   @JoinColumn({ name: 'board_id' })
